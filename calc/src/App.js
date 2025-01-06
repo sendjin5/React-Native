@@ -1,10 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import { Button } from "react-native-web";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>React native Start</Text>
+      <Text style={[styles.error, styles.text]}>React Native Start</Text>
+      <Button title="실행" onPress={{}} color="red" />
       <StatusBar style="auto" />
     </View>
   );
@@ -16,5 +18,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  error: {
+    color: "red",
+    fontSize: 30,
+    fontWeight: "700",
+  },
+  text: {
+    fontSize: 40,
+    fontWeight: "700",
+    color: "teal",
   },
 });
