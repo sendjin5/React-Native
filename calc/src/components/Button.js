@@ -1,8 +1,8 @@
 import { Text } from "react-native";
 import PropTypes from "prop-types";
 
-const Button = ({ title }) => {
-  return <Text>{title}</Text>;
+const Button = (title) => {
+  return <Text>{title.title}</Text>;
 };
 
 Button.defaultProps = {

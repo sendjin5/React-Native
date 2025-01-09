@@ -7,8 +7,8 @@ export default function App() {
     <View style={styles.container}>
       <Text style={[styles.error, styles.text]}>React Native Start</Text>
       <Button
-        title="실행"
-        color={"red"}
+        title="바뀜"
+        color="red"
         onPress={() => console.log("콘솔로그 클릭")}
       />
       <StatusBar style="auto" />
