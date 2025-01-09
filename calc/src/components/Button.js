@@ -1,8 +1,17 @@
-import { Text } from "react-native";
+import { Pressable, Text } from "react-native";
 import PropTypes from "prop-types";
 
 const Button = (title) => {
-  return <Text>{title.title}</Text>;
+  return (
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => {
+        {
+          backgroundColor: "red";
+        }
+      }}
+    />
+  );
 };
 
 Button.defaultProps = {
