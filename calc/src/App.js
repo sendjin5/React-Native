@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import Button, { ButtonTypes } from "./components/Button";
 import { useState } from "react";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 export default function App() {
   const [result, setResult] = useState(0);
@@ -9,7 +10,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={{ fontSize: 60 }}>{result}</Text>
-      <Button
+
+      <View style={styles.resultContainer}></View>
+      <View style={styles.buttonContainer}></View>
+
+      {/* <Button
         title="1"
         onPress={() => {}}
         buttonStyle={{ width: 100, height: 100 }}
@@ -31,7 +36,6 @@ export default function App() {
         title="+"
         onPress={() => {
           setResult(result + 1);
-          console.log("더하기기");
         }}
         buttonStyle={{ width: 100, height: 100 }}
         buttonType={ButtonTypes.OPERATOR}
@@ -40,11 +44,10 @@ export default function App() {
         title="-"
         onPress={() => {
           setResult(result - 1);
-          console.log(result);
         }}
         buttonStyle={{ width: 100, height: 100 }}
         buttonType={ButtonTypes.OPERATOR}
-      />
+      /> */}
       <StatusBar style="auto" />
     </View>
   );
@@ -65,6 +68,13 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 40,
     fontWeight: "700",
-    color: "#fff",
+  },
+  buttonContainer: {
+    color: Colors.white,
+    backgroundColor: Colors.black,
+  },
+  resultContainer: {
+    color: Colors.white,
+    backgroundColor: Colors.black,
   },
 });
