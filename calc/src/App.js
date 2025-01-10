@@ -1,10 +1,14 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import Button, { ButtonTypes } from "./components/Button";
+import { useState } from "react";
 
 export default function App() {
+  const [result, setResult] = useState(0);
+
   return (
     <View style={styles.container}>
+      <Text style={{ fontSize: 60 }}>{result}</Text>
       <Button
         title="1"
         onPress={() => {}}
@@ -20,6 +24,24 @@ export default function App() {
       <Button
         title="="
         onPress={() => {}}
+        buttonStyle={{ width: 100, height: 100 }}
+        buttonType={ButtonTypes.OPERATOR}
+      />
+      <Button
+        title="+"
+        onPress={() => {
+          setResult(result + 1);
+          console.log("더하기기");
+        }}
+        buttonStyle={{ width: 100, height: 100 }}
+        buttonType={ButtonTypes.OPERATOR}
+      />
+      <Button
+        title="-"
+        onPress={() => {
+          setResult(result - 1);
+          console.log(result);
+        }}
         buttonStyle={{ width: 100, height: 100 }}
         buttonType={ButtonTypes.OPERATOR}
       />
