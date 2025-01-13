@@ -21,17 +21,20 @@
     <h2 id="h2" class="h2">이 부분에 스타일을 적용합니다.</h2>
 
     <script>
-      let a = 4;
-      let b = 0;
+      let a = 5; // 수정된 값
+      let b = 1; // 초기값 변경
 
-      for (var i = 0; i < a; i++) {
-        b += i;
+      for (var i = 1; i <= a; i++) {
+        // 반복문 조건 변경
+        b *= i; // 곱셈 연산으로 변경
       }
 
-      console.log("undefined 값: ", undefined);
-      console.log("NaN 값: ", NaN);
-      console.log("0 값: ", 0);
-      console.log("값: ", "");
+      console.log("값: ", b);
+
+      // ① 값: 120
+      // ② 값: 60
+      // ③ 값: 24
+      // ④ 값: 12
     </script>
   </body>
   <script src="./index.js"></script>

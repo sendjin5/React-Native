@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import Button, { ButtonTypes } from "./components/Button";
+import Button, { ButtonTypes } from "./components/Button.js";
 import { useState } from "react";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
@@ -11,7 +11,7 @@ export default function App() {
     <View style={styles.container}>
       <Text style={{ fontSize: 60 }}>{result}</Text>
 
-      <View style={styles.resultContainer}></View>
+      <View style={styles.resultContainer}>내용</View>
       <View style={styles.buttonContainer}></View>
 
       {/* <Button
