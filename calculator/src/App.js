@@ -1,16 +1,17 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import Button, { ButtonTypes } from "./components/Button";
+import Button, { ButtonTypes } from "./components/Button.js";
 import { useState } from "react";
-import { Colors } from "react-native";
 
 export default function App() {
   const [result, setResult] = useState(0);
 
   return (
     <View style={styles.container}>
+      <Text style={{ fontSize: 60 }}>{result}</Text>
+
       <View style={styles.resultContainer}>내용</View>
-      <View style={styles.buttonContainer}>{result}</View>
+      <View style={styles.buttonContainer}></View>
 
       <Button
         title="1"
@@ -54,7 +55,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -68,13 +69,9 @@ const styles = StyleSheet.create({
     fontWeight: "700",
   },
   buttonContainer: {
-    color: "white",
-    backgroundColor: "black",
-    fontSize: 40,
+    color: "black",
   },
   resultContainer: {
-    color: "white",
-    backgroundColor: "black",
-    fontSize: 40,
+    color: "black",
   },
 });
