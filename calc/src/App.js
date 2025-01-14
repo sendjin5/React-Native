@@ -3,19 +3,43 @@ import { StyleSheet, Text, useWindowDimensions, View } from "react-native";
 import Button, { ButtonTypes } from "./components/Button";
 import { useState } from "react";
 
+const Operator = {
+  CLEAR: "C",
+  EQUAL: "=",
+  PLUS: "+",
+  MINUS: "-",
+};
+
 export default function App() {
   const [result, setResult] = useState(0);
+  const [formula, setFormula] = useState([]);
 
   // 버튼 크기기
   const width = (useWindowDimensions().width - 5) / 4;
   console.log(width);
+
+  // 숫자 버튼
+  const onPressNumber = (num) => {
+    setResult(result * 10 + num);
+  };
+  // 수식 계산산
+  const onPressOperator = (operator) => {
+    switch (operator) {
+      case Operator.CLEAR:
+        setResult(0);
+        setFormula([]);
+        break;
+      case Operator.EQUAL:
+        break;
+    }
+  };
 
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
 
       {/* 결과 */}
-      <View style={styles.resultContainer}>{result}</View>
+      <View style={styles.resultContainer}>{result.toLocaleString()}</View>
       {/* 버튼 */}
       <View style={styles.buttonContainer}>
         <View style={styles.leftPad}>
@@ -24,7 +48,9 @@ export default function App() {
               <Button
                 key={num}
                 title={num.toString()}
-                onPress={() => {}}
+                onPress={() => {
+                  onPressNumber(num);
+                }}
                 buttonStyle={{ width, height: width, marginBottom: 1 }}
                 buttonType={ButtonTypes.NUMBER}
               />
@@ -33,13 +59,17 @@ export default function App() {
           <View style={styles.bottom}>
             <Button
               title="0"
-              onPress={() => {}}
+              onPress={() => {
+                onPressNumber(0);
+              }}
               buttonStyle={{ width: width * 2, height: width, marginBottom: 1 }}
               buttonType={ButtonTypes.NUMBER}
             />
             <Button
               title="="
-              onPress={() => {}}
+              onPress={() => {
+                onPressOperator(Operator.EQUAL);
+              }}
               buttonStyle={{ width, height: width, marginBottom: 1 }}
               buttonType={ButtonTypes.OPERATOR}
             />
@@ -48,23 +78,25 @@ export default function App() {
         <View style={styles.rightPad}>
           <View style={styles.operator}>
             <Button
-              title="C"
-              onPress={() => {}}
-              buttonStyle={{ width, height: width, marginBottom: 1 }}
-              buttonType={ButtonTypes.OPERATOR}
-            />
-            <Button
-              title="-"
+              title={Operator.CLEAR}
               onPress={() => {
-                setResult(result - 100);
+                onPressOperator(Operator.CLEAR);
               }}
               buttonStyle={{ width, height: width, marginBottom: 1 }}
               buttonType={ButtonTypes.OPERATOR}
             />
             <Button
-              title="+"
+              title={Operator.MINUS}
               onPress={() => {
-                setResult(result + 100);
+                onPressOperator(Operator.MINUS);
+              }}
+              buttonStyle={{ width, height: width, marginBottom: 1 }}
+              buttonType={ButtonTypes.OPERATOR}
+            />
+            <Button
+              title={Operator.PLUS}
+              onPress={() => {
+                onPressOperator(Operator.PLUS);
               }}
               buttonStyle={{ width, height: width * 2, marginBottom: 1 }}
               buttonType={ButtonTypes.OPERATOR}
