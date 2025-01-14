@@ -1,52 +1,57 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, useWindowDimensions, View } from "react-native";
 import Button, { ButtonTypes } from "./components/Button";
 import { useState } from "react";
-import { Colors } from "react-native";
 
 export default function App() {
   const [result, setResult] = useState(0);
 
+  const width = useWindowDimensions().width / 4;
+  console.log(width);
+
   return (
     <View style={styles.container}>
-      <View style={styles.resultContainer}>내용</View>
-      <View style={styles.buttonContainer}>{result}</View>
+      <StatusBar style="light" />
 
-      <Button
-        title="1"
-        onPress={() => {}}
-        buttonStyle={{ width: 100, height: 100 }}
-        buttonType={ButtonTypes.NUMBER}
-      />
-      <Button
-        title="0"
-        onPress={() => {}}
-        buttonStyle={{ width: 200, height: 100 }}
-        buttonType={ButtonTypes.NUMBER}
-      />
-      <Button
-        title="="
-        onPress={() => {}}
-        buttonStyle={{ width: 100, height: 100 }}
-        buttonType={ButtonTypes.OPERATOR}
-      />
-      <Button
-        title="+"
-        onPress={() => {
-          setResult(result + 1);
-        }}
-        buttonStyle={{ width: 100, height: 100 }}
-        buttonType={ButtonTypes.OPERATOR}
-      />
-      <Button
-        title="-"
-        onPress={() => {
-          setResult(result - 1);
-        }}
-        buttonStyle={{ width: 100, height: 100 }}
-        buttonType={ButtonTypes.OPERATOR}
-      />
-      <StatusBar style="auto" />
+      {/* 결과 */}
+      <View style={styles.resultContainer}>{result}</View>
+      {/* 버튼 */}
+      <View style={styles.buttonContainer}>
+        <Button
+          title="1"
+          onPress={() => {}}
+          buttonStyle={{ width, height: 100 }}
+          buttonType={ButtonTypes.NUMBER}
+        />
+        <Button
+          title="0"
+          onPress={() => {}}
+          buttonStyle={{ width: 200, height: 100 }}
+          buttonType={ButtonTypes.NUMBER}
+        />
+        <Button
+          title="="
+          onPress={() => {}}
+          buttonStyle={{ width: 100, height: 100 }}
+          buttonType={ButtonTypes.OPERATOR}
+        />
+        <Button
+          title="+"
+          onPress={() => {
+            setResult(result + 100);
+          }}
+          buttonStyle={{ width: 100, height: 100 }}
+          buttonType={ButtonTypes.OPERATOR}
+        />
+        <Button
+          title="-"
+          onPress={() => {
+            setResult(result - 100);
+          }}
+          buttonStyle={{ width: 100, height: 100 }}
+          buttonType={ButtonTypes.OPERATOR}
+        />
+      </View>
     </View>
   );
 }
@@ -67,14 +72,27 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: "700",
   },
-  buttonContainer: {
-    color: "white",
-    backgroundColor: "black",
-    fontSize: 40,
-  },
   resultContainer: {
+    flex: 1,
+    alignItems: "flex-end",
+    justifyContent: "flex-end",
     color: "white",
     backgroundColor: "black",
-    fontSize: 40,
+    fontSize: 80,
+    width: "100%",
+    paddingRight: "10%",
+    paddingBottom: "10%",
+    borderColor: "red",
+    borderWidth: 2,
+  },
+  buttonContainer: {
+    flex: 2,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "white",
+    fontSize: 50,
+    width: "100%",
+    borderColor: "blue",
+    borderWidth: 2,
   },
 });
