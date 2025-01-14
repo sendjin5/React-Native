@@ -47,6 +47,8 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     justifyContent: "center",
+    fontSize: 40,
+    fontWeight: "700",
   },
   title: {
     fontSize: 40,
