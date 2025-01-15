@@ -36,6 +36,7 @@ export default function App() {
       case Operator.CLEAR:
         setResult(0);
         setFormula([]);
+
         break;
       case Operator.EQUAL:
         break;
