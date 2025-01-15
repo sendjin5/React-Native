@@ -20,7 +20,15 @@ export default function App() {
 
   // 숫자 버튼
   const onPressNumber = (num) => {
-    setResult(result * 10 + num);
+    const last = formula[formula.length - 1];
+
+    if (isNaN(last)) {
+      setResult(num);
+      console.log("num", num);
+      formula((result) => [...result, num]);
+    } else {
+      setResult(result * 10 + num);
+    }
   };
   // 수식 계산산
   const onPressOperator = (operator) => {
