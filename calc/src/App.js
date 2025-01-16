@@ -18,6 +18,28 @@ export default function App() {
   // 버튼 크기기
   const width = (useWindowDimensions().width - 5) / 4;
 
+  const calculrator = (value) => {
+    let calculratorNumber = 0;
+    let operator = "";
+
+    formula.forEach((value) => {
+      if ([Operator.PLUS, Operator.MINUS].includes(value)) {
+        operator = value;
+      } else {
+        if (operator === Operator.PLUS) {
+          calculratorNumber += value;
+        } else if (operator === Operator.MINUS) {
+          calculratorNumber -= value;
+        } else {
+          calculratorNumber = value;
+        }
+      }
+    });
+
+    setFormula([]);
+    setResult(calculratorNumber);
+  };
+
   // 숫자 버튼
   const onPressNumber = (num) => {
     const last = formula.at(-1);
@@ -44,6 +66,7 @@ export default function App() {
         setFormula([]);
         break;
       case Operator.EQUAL:
+        calculrator();
         break;
       default: {
         const last = formula.at(-1);
