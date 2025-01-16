@@ -13,21 +13,27 @@ const Operator = {
 export default function App() {
   const [result, setResult] = useState(0);
   const [formula, setFormula] = useState([]);
+  console.log("formula", formula);
 
   // 버튼 크기기
   const width = (useWindowDimensions().width - 5) / 4;
-  console.log(width);
 
   // 숫자 버튼
   const onPressNumber = (num) => {
-    const last = formula[formula.length - 1];
+    const last = formula.at(-1);
+    console.log("last", last);
 
     if (isNaN(last)) {
+      // 숫자가 아닐경우
       setResult(num);
-      console.log("num", num);
-      formula((result) => [...result, num]);
+      setFormula((prev) => [...prev, num]);
     } else {
-      setResult(result * 10 + num);
+      const newNumber = (last ?? 0) * 10 + num;
+      setResult(newNumber);
+      setFormula((prev) => {
+        prev.pop();
+        return [...prev, newNumber];
+      });
     }
   };
   // 수식 계산산
@@ -36,10 +42,21 @@ export default function App() {
       case Operator.CLEAR:
         setResult(0);
         setFormula([]);
-
         break;
       case Operator.EQUAL:
         break;
+      default: {
+        const last = formula.at(-1);
+        if ([Operator.PLUS, Operator.MINUS].includes(last)) {
+          setFormula((prev) => {
+            prev.pop();
+            return [...prev, operator];
+          });
+        } else {
+          setFormula((prev) => [...prev, operator]);
+        }
+        break;
+      }
     }
   };
 
