@@ -1,9 +1,8 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Button, Form } from "react-native";
 
 export default function App() {
   return (
-    // eslint-disable-next-line react/react-in-jsx-scope
     <View style={styles.container}>
       <Text style={{ fontSize: 50 }}>TodoList App Start</Text>
       <StatusBar style="auto" />
@@ -17,6 +16,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "flex-top",
-    paddingTop: 50,
+    paddingTop: 100,
   },
 });
