@@ -1,12 +1,16 @@
 import { View } from "react-native";
 
 const SignInScreens = () => {
-  return <View style={Styles.contatiner}></View>;
+  return (
+    <View style={Styles.contatiner}>
+      <Text>SignInScreens</Text>
+    </View>
+  );
 };
 
 const Styles = StyleSheet.create({
   contatiner: {
-    flex: 1,
-    justifyContents: "center",
+    justifyContent: "flex-end",
+    backgroundColor: "red",
   },
 });
